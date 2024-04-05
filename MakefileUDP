@@ -1,0 +1,16 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -pedantic
+
+all: UDP
+
+UDP: clientUDP serveurUDP
+
+clientUDP: clientUDP.c
+	$(CC) $(CFLAGS) -o clientUDP clientUDP.c
+
+serveurUDP: serveurUDP.c
+	$(CC) $(CFLAGS) -o serveurUDP serveurUDP.c
+
+clean:
+	rm -f clientTCP serveurTCP clientUDP serveurUDP
+

@@ -1,0 +1,17 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -pedantic
+GTKFLAGS = $(shell pkg-config --cflags --libs gtk+-3.0)
+
+all: TCP clientTCP
+
+TCP: serveurTCP
+
+clientgui: clientTCP.c
+	$(CC) $(CFLAGS) -o gui clientTCP.c -pthread $(GTKFLAGS)
+
+serveurTCP: serveurTCP.c
+	$(CC) $(CFLAGS) -o serveurTCP serveurTCP.c
+
+clean:
+	rm -f clientTCP serveurTCP clientUDP serveurUDP gui
+
